@@ -1,0 +1,87 @@
+@media (min-width: 1025px) and (min-width: 1920px) {
+  header {
+    position: relative;
+    z-index: 1;
+    background-color: black;
+  }
+  .container {
+    margin: 0 auto;
+    max-width: 1168px;
+  }
+  .header-section {
+    padding: 25px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .tab-active {
+    border-bottom: 2px solid white;
+  }
+  .navigation-ul {
+    display: flex;
+    gap: 50px;
+  }
+  .navigation-ul > li {
+    transition: 0.3s ease-in;
+    border-bottom: 2px solid rgba(255, 255, 255, 0);
+  }
+  .navigation-ul > li:hover {
+    border-bottom: 2px solid white;
+  }
+  .navigation-ul > li > a {
+    font-size: 16px;
+    font-family: "Inter Tight";
+    color: white;
+  }
+  .modalBox {
+    /*position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: #cccccc80;*/
+    display: flex;
+    justify-content: center;
+  }
+  .modalBox__window {
+    position: fixed;
+    z-index: 3;
+    width: 600px;
+    height: 300px;
+    background-color: white;
+    display: grid;
+    padding: 25px;
+    transform: translateY(-100%);
+    transition: 0.3s;
+  }
+  .activeModalBox__window {
+    transform: translateY(0%);
+    transition: 0.3s;
+  }
+  .modalBox__mes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .message {
+    font-size: 16px;
+    font-family: "Inter Tight";
+    font-weight: 800;
+  }
+  .modalBox__but {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+  .closeModalWindow {
+    padding: 10px 25px;
+    border: none;
+    outline: none;
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: "Inter Tight";
+    font-weight: 800;
+    cursor: pointer;
+  }
+}/*# sourceMappingURL=home.css.map */

@@ -1,0 +1,82 @@
+@mixin fonts_p{
+    font-size: 16px;
+    font-family: 'Inter Tight';
+    font-weight: 800;
+}
+@mixin fonts_h2{
+    font-size: 24px;
+    font-family: 'Inter Tight';
+    font-weight: 800;
+}
+
+
+@media (min-width: 1025px) and (min-width: 1920px){
+    footer{
+        background: black;
+    }
+    .section__footer {
+        padding: 15px 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .footer-nav {
+    }
+    .footer-nav__ul {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    .footer-nav__li {
+        & > a{
+            @include fonts_p();
+            color: white;
+            text-transform: uppercase;
+            transition: 0.2s;
+            &:hover{
+                text-shadow: 0 0 5px white;
+            }
+        }
+    }
+    .footer-right {
+        display: flex;
+        align-items: center;
+        & > h3{
+            @include fonts_p();
+            color: white;
+            text-transform: uppercase;
+        }
+    }
+    .footer-visit {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px
+    }
+    .footer-visit__span {
+        @include fonts_p();
+        color: white;
+        text-transform: uppercase;
+    }
+    .footer-visit__ul {
+        display: flex;
+        gap: 10px;
+    }
+    .footer-visit__li {
+        & > a{
+            @include fonts_p();
+            color: white;
+            transition: 0.2s;
+            &:hover{
+                text-shadow: 0 0 5px white;
+            }
+        }
+    }
+    .icon-vk {
+    }
+    .icon-facebook2 {
+    }
+    .icon-instagram {
+    }
+    .icon-twitter {
+    }
+}

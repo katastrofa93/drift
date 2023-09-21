@@ -1,0 +1,118 @@
+@media (min-width: 300px) and (min-width: 1920px) {
+  .news {
+    background: url(../../images/bg-2.jpg);
+    border-radius: 20px;
+    background-position: center;
+  }
+  .section__news {
+    padding: 48px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 45px;
+  }
+  .news-head > h2 {
+    font-size: 24px;
+    font-family: "Inter Tight";
+    font-weight: 800;
+    text-transform: uppercase;
+    color: white;
+  }
+  .news-blocks {
+    display: flex;
+    gap: 32px;
+  }
+  .news-blocks__article {
+    width: 322px;
+    height: 322px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.3607843137), transparent), url(../../images/news.jpg);
+    border-radius: 20px;
+    background-size: cover;
+    background-position: center;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 0px 10px 0;
+  }
+  .news-blocks__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .news-blocks__text > h3 {
+    font-size: 24px;
+    font-family: "Inter Tight";
+    font-weight: 800;
+    color: white;
+  }
+  .news-blocks__text > p {
+    font-size: 16px;
+    font-family: "Inter Tight";
+    font-weight: 800;
+    color: white;
+    text-align: justify;
+  }
+  .blocks-content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .blocks-content > img {
+    width: 200px;
+  }
+  .blocks-content > a {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+  }
+  .news-send {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .news-send > span {
+    font-size: 16px;
+    font-family: "Inter Tight";
+    font-weight: 800;
+    color: white;
+  }
+  .news-send__form {
+    display: flex;
+  }
+  .news-send__email {
+    border: 1px solid #FAFF00;
+    background: black;
+    width: 250px;
+    padding: 0px 10px;
+    outline: none;
+    font-size: 16px;
+    font-family: "Inter Tight";
+    font-weight: 800;
+    color: white;
+  }
+  .news-send__email::-moz-placeholder {
+    font-size: 16px;
+    font-family: "Inter Tight";
+    font-weight: 800;
+    color: #ccc;
+  }
+  .news-send__email::placeholder {
+    font-size: 16px;
+    font-family: "Inter Tight";
+    font-weight: 800;
+    color: #ccc;
+  }
+  .news-send__button {
+    outline: none;
+    background: #FAFF00;
+    font-size: 16px;
+    font-family: "Inter Tight";
+    font-weight: 800;
+    border: none;
+    padding: 10px 45px;
+    border-radius: 0px 40px 40px 0;
+    cursor: pointer;
+  }
+}/*# sourceMappingURL=news.css.map */

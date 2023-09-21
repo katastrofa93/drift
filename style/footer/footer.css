@@ -1,0 +1,64 @@
+@media (min-width: 1025px) and (min-width: 1920px) {
+  footer {
+    background: black;
+  }
+  .section__footer {
+    padding: 15px 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer-nav__ul {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .footer-nav__li > a {
+    font-size: 16px;
+    font-family: "Inter Tight";
+    font-weight: 800;
+    color: white;
+    text-transform: uppercase;
+    transition: 0.2s;
+  }
+  .footer-nav__li > a:hover {
+    text-shadow: 0 0 5px white;
+  }
+  .footer-right {
+    display: flex;
+    align-items: center;
+  }
+  .footer-right > h3 {
+    font-size: 16px;
+    font-family: "Inter Tight";
+    font-weight: 800;
+    color: white;
+    text-transform: uppercase;
+  }
+  .footer-visit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+  }
+  .footer-visit__span {
+    font-size: 16px;
+    font-family: "Inter Tight";
+    font-weight: 800;
+    color: white;
+    text-transform: uppercase;
+  }
+  .footer-visit__ul {
+    display: flex;
+    gap: 10px;
+  }
+  .footer-visit__li > a {
+    font-size: 16px;
+    font-family: "Inter Tight";
+    font-weight: 800;
+    color: white;
+    transition: 0.2s;
+  }
+  .footer-visit__li > a:hover {
+    text-shadow: 0 0 5px white;
+  }
+}/*# sourceMappingURL=footer.css.map */

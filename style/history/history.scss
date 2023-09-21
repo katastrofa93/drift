@@ -1,0 +1,98 @@
+@mixin fonts_p{
+    font-size: 16px;
+    font-family: 'Inter Tight';
+    font-weight: 800;
+}
+@mixin fonts_h2{
+    font-size: 24px;
+    font-family: 'Inter Tight';
+    font-weight: 800;
+}
+@mixin padding{
+    padding: 0px 10px;
+}
+
+@media (min-width: 300px) and (min-width: 1920px){
+    .history {
+        background: url(../../images/bg-1.jpg);
+        border-radius: 20px;
+        background-position: center;
+    }
+    .sectiuon__history {
+        display: flex;
+        padding: 0px 10px;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .row {
+    }
+    .row__left {
+        & > img{
+            cursor: pointer;
+            transition: 0.3s;
+            &:active{
+                transform: scale(0.5);
+            }
+        }
+    }
+    .slider__wrap{
+        width: 900px;
+        //margin: 0 auto;
+    }
+    .slider-container {
+        overflow: hidden;
+    }
+    .slider-container__track {
+        display: flex;
+        transition: 0.3s ease-in;
+    }
+    .slider-container__item {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        background: linear-gradient(180deg, black, transparent),url(../../images/his.jpg);
+        background-position: center;
+        border-radius: 40px;
+        width: 900px;
+        height: 500px;
+        align-items: center;
+        padding: 0 120px;
+        gap: 40px;
+    }
+    .item-images {
+        display: flex;
+        justify-content: center;
+        & > div{
+            background: url(../../images/pilot.jpg);
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background-position: center;
+            background-size: cover;
+            box-shadow: 0px 0px 10px 0px;
+        }
+    }
+    .item-history {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 370px;
+    }
+    .item-head {
+        @include fonts_p();
+        color: white;
+    }
+    .item-text {
+        @include fonts_p();
+        color: white;
+        text-align: justify;
+    }
+    .row__right {
+        & > img{
+            cursor: pointer;
+            transition: 0.3s;
+            &:active{
+                transform: scale(0.5);
+            }
+        }
+    }
+}

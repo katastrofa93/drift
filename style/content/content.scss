@@ -1,0 +1,157 @@
+@mixin fonts_p{
+    font-size: 16px;
+    font-family: 'Inter Tight';
+    font-weight: 800;
+}
+@mixin fonts_h2{
+    font-size: 24px;
+    font-family: 'Inter Tight';
+    font-weight: 800;
+}
+@mixin padding{
+    padding: 0px 10px;
+}
+$colorsHead: #FF6666;
+$colorsknob: #F7FC00;
+@media (min-width: 500px) and (min-width: 1920px){
+    .content {
+        background: url(../../images/content.jpg);
+        border-radius: 20px;
+    }
+    .section__content {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        padding: 30px 10px;
+    }
+    .first-block {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 32px;
+    }
+    .first-block__video {
+        
+    }
+    .videos{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        & > video{
+            width: 200px;
+            height: 200px;
+            background-color: black;
+            border-radius: 40px;
+            cursor: pointer;
+        }
+    }
+    .first-block__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    .first-block__text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        & > h2{
+            @include fonts_h2();
+            color: $colorsHead;
+            
+            text-transform: uppercase;
+        }
+        & > p{
+            @include fonts_p();
+            
+        }
+    }
+    .first-block__intro {
+        width: 500px;
+        display: flex;
+        justify-content: center;
+        & > video{
+            width: 100%;
+            height: 232px;
+            background-color: black;
+        }
+    }
+    .first-block__href {
+        display: flex;
+        & > a{
+            padding: 12px 63px;
+            background-color: $colorsknob;
+            @include fonts_p();
+            font-weight: 800;
+            color: black;
+            text-transform: uppercase;
+            border-radius: 40px;
+            cursor: pointer;
+        }
+    }
+    .section__second-block {
+        position: relative;
+        background: linear-gradient(45deg, black, transparent),url(../../images/sliva.jpg);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-radius: 40px;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position-y: center;
+        padding: 26px 0px 94px 59px;
+        &::before{
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .section__second-left {
+        display: flex;
+        flex-direction: column;
+    }
+    .section__second-text {
+        display: flex;
+        flex-direction: column;
+        gap: 13px;
+        & > h2{
+            @include fonts_p();
+            color: black;
+        }
+        & > p{
+            @include fonts_p();
+            color: white;
+            text-align: justify;
+        }
+    }
+    .section__second-stars {
+        padding: 66px 0 0px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        & > p{
+            @include fonts_p();
+            font-size: 10px;
+            color: white;
+        }
+    }
+    .stars{
+
+    }
+    .section__second-right {
+        display: flex;
+        justify-content: center;
+        & > h2{
+            transform: rotate(-25deg);
+            display: flex;
+            align-items: center;
+        }
+    }
+    .section__second-king {
+        
+        @include fonts_p();
+        font-size: 70px;
+        color: $colorsHead;
+        
+    }
+}

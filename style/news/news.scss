@@ -1,0 +1,121 @@
+@mixin fonts_p{
+    font-size: 16px;
+    font-family: 'Inter Tight';
+    font-weight: 800;
+}
+@mixin fonts_h2{
+    font-size: 24px;
+    font-family: 'Inter Tight';
+    font-weight: 800;
+}
+@mixin padding{
+    padding: 0px 10px;
+}
+
+@media (min-width: 300px) and (min-width: 1920px){
+    .news {
+        background: url(../../images/bg-2.jpg);
+        border-radius: 20px;
+        background-position: center;
+    }
+    .container {
+    }
+    .section__news {
+        padding: 48px 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 45px;
+    }
+    .news-head {
+        & > h2{
+            @include fonts_h2();
+            text-transform: uppercase;
+            color: white;
+        }
+    }
+    .news-blocks {
+        display: flex;
+        gap: 32px;
+    }
+    .news-blocks__article {
+        width: 322px;
+        height: 322px;
+        background: linear-gradient(180deg, #0000005c, transparent), url(../../images/news.jpg);
+        border-radius: 20px;
+        background-size: cover;
+        background-position: center;
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0px 0px 10px 0;
+    }
+    .news-blocks__text {
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        & > h3{
+            @include fonts_h2();
+            color: white;
+        }
+        & > p{
+            @include fonts_p();
+            color: white;
+            text-align: justify;
+        }
+    }
+    .news-blocks__content {
+        
+    }
+    .blocks-content{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        & > img{
+            width: 200px;
+        }
+        & > a{
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .news-send {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        & > span{
+            @include fonts_p();
+            color: white;
+        }
+    }
+    .news-send__form {
+        display: flex;
+    }
+    .news-send__email{
+        border: 1px solid #FAFF00;
+        background: black;
+        width: 250px;
+        padding: 0px 10px;
+        outline: none;
+        @include fonts_p();
+        color: white;
+        &::placeholder{
+            @include fonts_p();
+            color: #ccc;
+        }
+    }
+    .news-send__button {
+        outline: none;
+        background: #FAFF00;
+        @include fonts_p();
+        border: none;
+        padding: 10px 45px;
+        border-radius: 0px 40px 40px 0;
+        cursor: pointer;
+    }
+
+}
