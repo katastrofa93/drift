@@ -1,73 +1,60 @@
 <?php
     require 'connect.php';
-    require 'jsonConnect.php';
-    echo 'Ответ от сервера <br>';
-    $email = htmlspecialchars(trim($_POST['subscribe']));
-    $date = date('G:i d-m-Y');
-    
-    
-    
-    //if(!empty($email)){     
-        $sel = "SELECT * FROM Subscribe WHERE Emails = '$email'";
-        if($result = $connect->query($sel)){
-            foreach($result as $key => $value){
+    $email = htmlentities(trim($_POST['subscribe']));
+    $time = date(DATE_RFC822);
+    class Subscribe{
+        public $email;
+        public $time;
+        public $connect;
+        public $subject;
+        public $message;
+        public $headers;
+        function __construct($email, $time, $connect){
+            $this->email = $email;
+            $this->time = $time;
+            $this->connect = $connect;
+        }
+        function message($request){
+            $message = array(
+                $request
+            );
+            echo json_encode($message, JSON_UNESCAPED_UNICODE);
+        }
+        function insert(){
+            $insert = "INSERT INTO Subscribe (Emails, TimeSubscribe) VALUES('$this->email', '$this->time')";
+            if($this->connect->query($insert)){
+                $mail = mail($this->email, $this->subject, $this->message, $this->headers);
+                if($mail){
+                    $this->message('Спасибо за подписку. На ваш почтовый ящик отправлено письмо');
+                }else{
+                    $this->message('Письмо не отправлено');
+                }
+                
+            }else{
+                $this->message($this->connect->error);
             }
-            if($value['Emails'] === $email){
-                echo 'USER '.$email.' JUST SUBSCRIBED';
-                writeOnJson($file, $connect, $emails, $fopen); //Функция записи email подписавшщегося в JSON файл
-            }else{  
-                $to = $email;
-                $subject = 'Вы успешно подписались на рассылку';
-                $message = '
-                    <html>
-                        <head>
-                            <title>Новости</title>
-                        </head>
-                        <body>
-                            <table>
-                                <tr>
-                                    <th>'.$subject.'</th>
-                                </tr>
-                                <tr>
-                                    <td>Участник: '.$to.'</td>
-                                </tr>
-                                <tr>
-                                    <td>Поздравляем! Теперь вы будете получать самые свежие новости с www.olddrift2000.ru</td>
-                                </tr>
-                            </table>
-                        </body>
-                    </html>
-                    ';
-                $headers  = 'MIME-Version: 1.0' . "\r\n";
-                $headers .= 'Content-type: text/html;' . "\r\n";
-                /***************************/
-                $insi = "INSERT INTO Subscribe (Emails, TimeSubscribe) VALUES ('$email', '$date');";
-                if($connect->query($insi)){
-                    echo 'Your subscribe <br>';
-                    writeOnJson($file, $connect, $emails, $fopen); //Функция записи email подписавшщегося в JSON файл
-                    $send = mail($to, $subject, $message, $headers);
-                    if($send){
-                        echo 'Mail to send';
+        }
+        function compare(){
+            $select = "SELECT * FROM Subscribe WHERE Emails = '$this->email'";
+            if($result = $this->connect->query($select)){
+                foreach($result as $key=>$value){}
+                if($this->email != ''){
+                    if($this->email != $value['Emails']){
+                        $this->insert();
                     }else{
-                        echo 'Mail not send';
+                        $this->message('Пользователь '.$this->email.' подписан');
                     }
                 }else{
-                    $connect->error;
+                    $this->message('Поле email должно быть заполнено');
                 }
-
+            }else{
+                $this->message($this->connect->error);
             }
-        }else{
-            echo $connect->error;
-        }  
-    /*}else{
-        echo 'FIELD MAIL EMPTY';
-    }*/
-    
-    
-
-    
-    
-    
-    
-
+        }
+    }
+    $subscribe = new Subscribe($email, $time, $connect);
+    $subscribe->subject = 'Спасибо за подписку';
+    $subscribe->message = 'Здесь будет разметка';
+    $subscribe->headers = 'Content-type: text/html; charset=iso-8859-1';
+    $subscribe->compare();
 ?>

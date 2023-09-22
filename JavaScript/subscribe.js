@@ -1,59 +1,52 @@
-const subscribe = document.querySelector('.news-send__email');
-const subscribeSend = document.querySelector('.news-send__button');
+let modalBox = document.querySelector('.modalBox__window');
+let modalText = document.querySelector('.message');
+let modalClose = document.querySelector('.closeModalWindow');
+
+const subscribePath = '../PHP/subscribe.php';
 const subscribeForm = document.querySelector('.news-send__form');
-const modalWindow = document.querySelector('.modalBox__window');
-let message = document.querySelector('.message');
-const closeModalWindow = document.querySelector('.closeModalWindow');
+const subscribeSend = document.querySelector('.news-send__button');
 
-let file = '../emails.json';
-let emails = [];
+class ToFetch{
+    modalBox
+    modalText;
+    modalClose
+    constructor(path, form, send){
+        this.path = path;
+        this.form = form;
+        this.send = send;
+    }
+    async request(){
+        let request = await fetch(this.path,{
+            method: 'POST',
+            body: new FormData(this.form),
+        });
+        if(request.ok){
+            let answer = request.json();
+            //console.log(answer);
+            answer.then(
+                function(result){
+                    console.log(`Resolve ${result}`);
+                    modalText.innerText = result;
+                },
+                function(error){
+                    console.log(`Reject ${error}`);
+                }
+            )  
+        }else{
+            console.log(request.status);
+        }
+    }
+    viewModal(){
 
-async function readFile(path, array){
-    let response = await fetch(path);
-    if(response.ok){
-        let json = await response.json();
-        console.log('Ответ от JSON файла ' + json);
-        for(key in json){
-            array.push(json[key]); 
-        } 
-    }else{
-        console.log('не 200');
+    }
+    event(){
+        this.send.addEventListener('click', (e)=>{
+            e.preventDefault();
+            this.request();
+        })
     }
 }
 
-
-//*при загрузки страницы происходит заполнения массива из JSON файла
-readFile(file, emails);
-console.log(emails);
-
-subscribeForm.onsubmit = async (e)=> {
-    readFile(file, emails);
-    //console.log(`Это массив после нажатия кнопки:  ${emails}`);
-    e.preventDefault();
-    if(subscribe.value === ''){ //*Проверяем на пустоту
-        message.innerHTML = 'Поле Email путое.';
-        modalWindow.classList.add('activeModalBox__window');
-    }else{ //*создаем запрос fetch
-        let response = await fetch('../PHP/subscribe.php',{
-        method: 'POST',
-        body: new FormData(subscribeForm), //*собираем данные с формы
-        });
-        if(response.ok){ //*если запрос отправлен
-            if(emails.includes(subscribe.value)){ //*проверка массива из файла JSON на совпадение email
-                message.innerHTML = `Пользователь с email ${subscribe.value} уже подписан`;
-                modalWindow.classList.add('activeModalBox__window');
-                subscribe.value = ''; 
-                console.log(response.text());
-            }else{ //*отравляем
-                message.innerHTML = 'Спасибо за подписку';
-                modalWindow.classList.add('activeModalBox__window');
-                subscribe.value = ''; 
-                console.log(response.text());
-            }     
-        }     
-    }  
-}
-closeModalWindow.addEventListener('click', (e)=>{
-    e.preventDefault();
-    modalWindow.classList.toggle('activeModalBox__window');
-})
+const subscribe = new ToFetch(subscribePath, subscribeForm, subscribeSend);
+subscribe.modalText = modalText;
+subscribe.event();
